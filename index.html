@@ -1,257 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rishi Raj (Lucky) - Maths & History Educator | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #4facfe, #00f2fe);
-            background-size: 400% 400%;
-            animation: gradientShift 18s ease infinite;
-            color: #1e293b;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-        }
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        header {
-            text-align: center;
-            padding: 60px 20px 30px;
-            color: white;
-            text-shadow: 1px 1px 6px rgba(0,0,0,0.4);
-        }
-        h1 {
-            font-size: 3.2em;
-            margin-bottom: 12px;
-        }
-        .tag {
-            font-size: 1.2em;
-            color: #e0f2fe;
-        }
-        .section {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255,255,255,0.3);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-            border-radius: 24px;
-            padding: 35px;
-            margin: 25px 15px;
-            width: 100%;
-            max-width: 900px;
-            text-align: center;
-            color: #0f172a;
-            transition: all 0.5s ease;
-            opacity: 0;
-            transform: translateY(40px);
-        }
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .section:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-        }
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-            transition: 0.7s;
-        }
-        .section:hover::before {
-            left: 100%;
-        }
-        .buttons, .demos {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            margin: 40px 0;
-        }
-        .btn, .demo-box {
-            padding: 18px 40px;
-            font-size: 1.3em;
-            font-weight: 600;
-            color: white;
-            text-decoration: none;
-            border-radius: 60px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .btn::before, .demo-box::before {
-            content: '';
-            position: absolute;
-            top: 50%; left: 50%;
-            width: 0; height: 0;
-            background: rgba(255,255,255,0.4);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-        .btn:hover::before, .demo-box:hover::before {
-            width: 400px; height: 400px;
-        }
-        .btn:nth-child(1) {
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-        }
-        .btn:nth-child(2) {
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
-        }
-        .btn:hover, .demo-box:hover {
-            transform: translateY(-8px) scale(1.08);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-        }
-        .demo-box {
-            min-width: 220px;
-            font-size: 1.2em;
-        }
-        .demo-box:nth-child(1) { background: linear-gradient(135deg, #fa709a, #fee140); color: #1e293b; }
-        .demo-box:nth-child(2) { background: linear-gradient(135deg, #30cfd0, #330867); }
-        .demo-box:nth-child(3) { background: linear-gradient(135deg, #a8edea, #fed6e3); color: #1e293b; }
-        .demo-box:nth-child(4) { background: linear-gradient(135deg, #ff9a56, #ff6a88); }
-        .features {
-            text-align: left;
-            max-width: 700px;
-            margin: 30px auto 0;
-            font-size: 1.15em;
-        }
-        .features p {
-            margin: 12px 0;
-        }
-        .contact-section {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-        }
-        .phone {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(255,255,255,0.25);
-            padding: 18px 40px;
-            border-radius: 60px;
-            margin-top: 25px;
-            font-size: 1.4em;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-            transition: all 0.4s;
-        }
-        .phone:hover {
-            background: rgba(255,255,255,0.4);
-            transform: scale(1.08);
-        }
-        footer {
-            margin: 80px 0 40px;
-            color: white;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-            font-size: 1.1em;
-        }
-        @media (max-width: 768px) {
-            h1 { font-size: 2.4em; }
-            .btn, .demo-box, .phone { padding: 14px 30px; font-size: 1.1em; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rishi Raj (Lucky) - Maths & History Educator | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #4facfe, #00f2fe);
+      background-size: 400% 400%;
+      animation: gradientShift 18s ease infinite;
+      color: #1e293b;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px 30px;
+      color: white;
+      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    h1 {
+      font-size: 3.2em;
+      margin-bottom: 12px;
+    }
+
+    .tag {
+      font-size: 1.2em;
+      color: #e0f2fe;
+    }
+
+    .section {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      border-radius: 24px;
+      padding: 35px;
+      margin: 25px 15px;
+      width: 100%;
+      max-width: 900px;
+      text-align: center;
+      color: #0f172a;
+      transition: all 0.5s ease;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+      transition: 0.7s;
+    }
+
+    .section:hover::before {
+      left: 100%;
+    }
+
+    .buttons,
+    .demos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .btn,
+    .demo-box {
+      padding: 18px 40px;
+      font-size: 1.3em;
+      font-weight: 600;
+      color: white;
+      text-decoration: none;
+      border-radius: 60px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .btn::before,
+    .demo-box::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .btn:hover::before,
+    .demo-box:hover::before {
+      width: 400px;
+      height: 400px;
+    }
+
+    .btn:nth-child(1) {
+      background: linear-gradient(135deg, #f093fb, #f5576c);
+    }
+
+    .btn:nth-child(2) {
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+    }
+
+    .btn:hover,
+    .demo-box:hover {
+      transform: translateY(-8px) scale(1.08);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .demo-box {
+      min-width: 220px;
+      font-size: 1.2em;
+    }
+
+    .demo-box:nth-child(1) {
+      background: linear-gradient(135deg, #fa709a, #fee140);
+      color: #1e293b;
+    }
+
+    .demo-box:nth-child(2) {
+      background: linear-gradient(135deg, #30cfd0, #330867);
+    }
+
+    .demo-box:nth-child(3) {
+      background: linear-gradient(135deg, #a8edea, #fed6e3);
+      color: #1e293b;
+    }
+
+    .demo-box:nth-child(4) {
+      background: linear-gradient(135deg, #ff9a56, #ff6a88);
+    }
+
+    .features {
+      text-align: left;
+      max-width: 700px;
+      margin: 30px auto 0;
+      font-size: 1.15em;
+    }
+
+    .features p {
+      margin: 12px 0;
+    }
+
+    .contact-section {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+    }
+
+    .phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.25);
+      padding: 18px 40px;
+      border-radius: 60px;
+      margin-top: 25px;
+      font-size: 1.4em;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s;
+    }
+
+    .phone:hover {
+      background: rgba(255, 255, 255, 0.4);
+      transform: scale(1.08);
+    }
+
+    footer {
+      margin: 80px 0 40px;
+      color: white;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+      font-size: 1.1em;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.4em;
+      }
+
+      .btn,
+      .demo-box,
+      .phone {
+        padding: 14px 30px;
+        font-size: 1.1em;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-    <header>
-        <h1>Rishi</h1>
-        <p class="tag">(Best on PC • Mobile pe desktop mode on kare)</p>
-    </header>
+  <header>
+    <h1>Rishi</h1>
+    <p class="tag">(Best on PC • Mobile pe desktop mode on kare)</p>
+  </header>
 
-    <div class="section">
-        <h2>🌟 My Self-Made Websites</h2>
-        <p>100% original work jo maine khud banaya hai! Check them out 👇</p>
-        
-        <p><b><span style="color:green;">but ye mai ne bass Laptop ke leye bana tha not mob {mob le leye aager aap bole mob and laptop bothj then wo v kar dege}</span></b></p>
+  <div class="section">
+    <h2>🌟 My Self-Made Websites</h2>
+    <p>100% original work jo maine khud banaya hai! Check them out 👇</p>
 
-        
-        <div class="buttons">
-            <a href="https://75raj.github.io/Maths/" class="btn" target="_blank">🌐 Maths Website</a>
-            <a href="https://75rishi.github.io/MedievalHisLec1/" class="btn" target="_blank">🏛️ History Quiz</a>
-        </div>
+    <p><b><span style="color:green;">but ye mai ne bass Laptop ke leye bana tha not mob {mob le leye aager aap bole mob
+          and laptop bothj then wo v kar dege}</span></b></p>
+
+
+    <div class="buttons">
+      <a href="https://75raj.github.io/Maths/" class="btn" target="_blank">🌐 Maths Website</a>
+      <a href="https://75rishi.github.io/MedievalHisLec1/" class="btn" target="_blank">🏛️ History Quiz</a>
     </div>
+  </div>
 
-    <div class="section">
-        <h2>💡 Key Features of My Work</h2>
-        <div class="features">
-            <p>🔹 Hindi + English dono languages mein full support</p>
-            <p>🔹 Smart input: Sirf A, B, C, D type or ya bole abcd  → auto detect</p>
-            <p>🔹 ya phir aap right answr bole jo option tab v sumit</p>
-            <p>🔹 Instant feedback: Right answer pe "Correct" show</p>
-            <p>🔹 Auto-advance: Wrong pe next question load ho jata hai</p>
-            <p>🔹 Interactive quiz with timer, progress & smooth UI</p>
-            
-        </div>
-    </div>
+  <div class="section">
+    <h2>💡 Key Features of My Work</h2>
+    <div class="features">
+      <p>🔹 Hindi + English dono languages mein full support</p>
+      <p>🔹 Smart input: Sirf A, B, C, D type or ya bole abcd → auto detect</p>
+      <p>🔹 ya phir aap right answr bole jo option tab v sumit</p>
+      <p>🔹 Instant feedback: Right answer pe "Correct" show</p>
+      <p>🔹 Auto-advance: Wrong pe next question load ho jata hai</p>
+      <p>🔹 Interactive quiz with timer, progress & smooth UI</p>
 
-    <div class="section">
-        <h2>📊 Offline PPTs & Presentations</h2>
-        <p>High-quality slides jo maine offline classes ke liye banaye — engaging visuals aur clear explanations ke saath!</p>
     </div>
+  </div>
 
-    <div class="section">
-        <h2>📝 Bilingual Notes & Content</h2>
-        <p>Main detailed notes, quizzes, model papers Hindi + English mein bana sakta hoon.<br><strong>Bas ek chance de  please 🙏🔥</strong></p>
-    </div>
+  <div class="section">
+    <h2>📊 Offline PPTs & Presentations</h2>
+    <p>High-quality slides jo maine offline classes ke liye banaye — engaging visuals aur clear explanations ke saath!
+    </p>
+  </div>
 
-    <div class="section">
-        <h2>📁 Demo Materials (Samples)</h2>
-        <p>Ye woh  PDFs hain jo maine students ke liye banaye:</p>
-        <p>aap jisa bole mai wasi kar du ba</p>
-        <p></p>
-        <div class="demos">
-            <a href="https://drive.google.com/file/d/1t65MvPIYIen17XLdwwQ-NDRTo1pq92nm/view?usp=sharing" class="demo-box" target="_blank">📂 Demo 1</a>
-            <a href="https://drive.google.com/file/d/1MMl8CckMVjaLHIckTssPRfqQRQmesFE9/view?usp=sharing" class="demo-box" target="_blank">📂 Demo 2</a>
-            <a href="https://drive.google.com/file/d/1ejaoZkp3E2GedWiE1h4INu3c5HTtznOM/view?usp=sharing" class="demo-box" target="_blank">📂 Demo 3</a>
-            <a href="https://drive.google.com/file/d/1f3OU9xfr_INiD1CrUabxzTFFqkzdJkHa/view?usp=sharing" class="demo-box" target="_blank">📂 Demo 4</a>
-        </div>
-    </div>
+  <div class="section">
+    <h2>📝 Bilingual Notes & Content</h2>
+    <p>Main detailed notes, quizzes, model papers Hindi + English mein bana sakta hoon.<br><strong>Bas ek chance de
+        please 🙏🔥</strong></p>
+  </div>
 
-    <div class="section contact-section">
-        <h2>📞 Contact </h2>
-        <p>if you are Interested? then</p>
-        <a href="tel:+916200327781" class="phone">📱 6200327781</a>
-    </div>
- <div class="section contact-section">
-       
-        <p>can you tell me right time jise time ham chat pe bat kar sakte ya call pe</p>
-        
-    </div>
-    <footer>
-        © 2026 Rishi  ) • Made with ❤️ in Bihar </footer>
+  <div class="section">
+    <h2>📁 Demo Materials (Samples)</h2>
+    <p>Wo notes mai jaha Mai offline coaching jata tha waha ka hai jo ham bane the
 
-    <script>
-        // Fade-in on scroll
-        const sections = document.querySelectorAll('.section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.15 });
-        sections.forEach(sec => observer.observe(sec));
-    </script>
+
+
+    </p>
+    <p>aap jisa bole mai wasi kar du </p>
+    <p></p>
+    <div class="demos">
+      <a href="https://drive.google.com/file/d/1t65MvPIYIen17XLdwwQ-NDRTo1pq92nm/view?usp=sharing" class="demo-box"
+        target="_blank">📂 Demo 1</a>
+      <a href="https://drive.google.com/file/d/1MMl8CckMVjaLHIckTssPRfqQRQmesFE9/view?usp=sharing" class="demo-box"
+        target="_blank">📂 Demo 2</a>
+      <a href="https://drive.google.com/file/d/1ejaoZkp3E2GedWiE1h4INu3c5HTtznOM/view?usp=sharing" class="demo-box"
+        target="_blank">📂 Demo 3</a>
+      <a href="https://drive.google.com/file/d/1f3OU9xfr_INiD1CrUabxzTFFqkzdJkHa/view?usp=sharing" class="demo-box"
+        target="_blank">📂 Demo 4</a>
+    </div>
+  </div>
+
+  <div class="section contact-section">
+    <h2>📞 Contact </h2>
+    <p>if you are Interested? then</p>
+    <a href="tel:+916200327781" class="phone">📱 6200327781</a>
+  </div>
+  <div class="section contact-section">
+
+    <p>can you tell me right time jise time ham chat pe bat kar sakte ya call pe</p>
+
+  </div>
+  <footer>
+    © 2026 Rishi ) • Made with ❤️ in Bihar </footer>
+
+  <script>
+    // Fade-in on scroll
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    sections.forEach(sec => observer.observe(sec));
+  </script>
 
 </body>
+
 </html>
